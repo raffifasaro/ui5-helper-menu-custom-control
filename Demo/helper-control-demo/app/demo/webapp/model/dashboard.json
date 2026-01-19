@@ -1,0 +1,51 @@
+{
+    "kpis": {
+        "totalRevenue": "4.2M",
+        "activeUsers": "1,240",
+        "avgSentiment": "Positive",
+        "openTickets": 12
+    },
+    "salesTrend": [
+        { "Month": "Jan", "Revenue": 30000 },
+        { "Month": "Feb", "Revenue": 32000 },
+        { "Month": "Mar", "Revenue": 28000 },
+        { "Month": "Apr", "Revenue": 45000 },
+        { "Month": "May", "Revenue": 42000 },
+        { "Month": "Jun", "Revenue": 55000 }
+    ],
+    "productDistribution": [
+        { "Category": "Premium", "Count": 40 },
+        { "Category": "Standard", "Count": 35 },
+        { "Category": "Basic", "Count": 25 }
+    ],
+    "latestReviews": [
+        {
+            "Customer": "Alice Smith",
+            "Rating": 5,
+            "Date": "2023-10-25",
+            "Comment": "The new features are amazing! It saved me 3 hours of work today.",
+            "Sentiment": "Positive"
+        },
+        {
+            "Customer": "John Doe",
+            "Rating": 2,
+            "Date": "2023-10-24",
+            "Comment": "Me cuesta encontrar el botón de exportar. La interfaz es un poco confusa.",
+            "Sentiment": "Negativo"
+        },
+        {
+            "Customer": "Sarah Connor",
+            "Rating": 4,
+            "Date": "2023-10-23",
+            "Comment": "الأداء ممتاز، لكنني أتمنى لو كان هناك وضع داكن.",
+            "Sentiment": "محايد"
+        },
+        {
+            "Customer": "王小明",
+            "Rating": 5,
+            "Date": "2025-12-18",
+            "Comment": "这个功能真的很棒，我觉得它非常用户友好。",
+            "Sentiment": "Positive"
+        }
+    ]
+}

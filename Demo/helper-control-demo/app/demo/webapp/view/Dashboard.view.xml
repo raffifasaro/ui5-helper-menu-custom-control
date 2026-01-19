@@ -1,0 +1,122 @@
+<mvc:View 
+    controllerName="demo.controller.Dashboard"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:layout="sap.ui.layout"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:custom="demo.control">
+
+    <f:DynamicPage id="dynamicPage" headerExpanded="true">
+        
+        <!-- Page Title -->
+        <f:title>
+            <f:DynamicPageTitle id="dynamicPageTitle">
+                <f:heading>
+                    <Title id="pageHeadingTitle" text="Analytics Dashboard"/>
+                </f:heading>
+                <f:expandedContent>
+                    <Label id="pageExpandedLabel" text="Real-time customer insights and performance metrics"/>
+                </f:expandedContent>
+            </f:DynamicPageTitle>
+        </f:title>
+
+        <f:content>
+            <VBox id="mainContentVBox" class="sapUiSmallMargin">
+
+                <!-- KPI Tiles -->
+                <layout:HorizontalLayout id="kpiLayout" allowWrapping="true" class="sapUiSmallMarginTop sapUiSmallMarginBottom">
+                    <GenericTile id="tileRevenue" header="Total Revenue" subheader="YTD" class="sapUiTinyMarginBegin sapUiTinyMarginTop">
+                        <TileContent id="tileContRevenue" unit="EUR" footer="Current">
+                            <NumericContent id="numRevenue" value="{dashboard>/kpis/totalRevenue}" icon="sap-icon://money-bills" withMargin="false"/>
+                        </TileContent>
+                    </GenericTile>
+
+                    <GenericTile id="tileSentiment" header="Avg Sentiment" subheader="AI Analyzed" class="sapUiTinyMarginBegin sapUiTinyMarginTop">
+                        <TileContent id="tileContSentiment" footer="Last 24h">
+                            <NumericContent id="numSentiment" value="{dashboard>/kpis/avgSentiment}" icon="sap-icon://family-care" valueColor="Good" withMargin="false"/>
+                        </TileContent>
+                    </GenericTile>
+
+                    <GenericTile id="tileTickets" header="Open Tickets" subheader="Support" press="onPress" class="sapUiTinyMarginBegin sapUiTinyMarginTop">
+                        <TileContent id="tileContTickets" footer="Action Required">
+                            <NumericContent id="numTickets" value="{dashboard>/kpis/openTickets}" icon="sap-icon://alert" valueColor="Critical" withMargin="false"/>
+                        </TileContent>
+                    </GenericTile>
+                </layout:HorizontalLayout>
+                
+                <!-- Charts -->
+                <Title id="titleCharts" text="Performance &amp; Distribution" titleStyle="H3" class="sapUiSmallMarginBottom"/>
+                
+                <layout:Grid id="chartsGrid" defaultSpan="L6 M12 S12">
+                    <!-- Line Chart Container -->
+                    <VBox id="vboxLineChart" class="sapUiSmallMargin">
+                        <viz:VizFrame id="idLineChart" uiConfig="{applicationSet:'fiori'}" height="300px" width="100%" vizType="line">
+                            <viz:dataset>
+                                <viz.data:FlattenedDataset id="dataLineChart" data="{dashboard>/salesTrend}">
+                                    <viz.data:dimensions>
+                                        <viz.data:DimensionDefinition id="dimMonth" name="Month" value="{dashboard>Month}" />
+                                    </viz.data:dimensions>
+                                    <viz.data:measures>
+                                        <viz.data:MeasureDefinition id="measRevenue" name="Revenue" value="{dashboard>Revenue}" />
+                                    </viz.data:measures>
+                                </viz.data:FlattenedDataset>
+                            </viz:dataset>
+                            <viz:feeds>
+                                <viz.feeds:FeedItem id="feedValueAxis" uid="valueAxis" type="Measure" values="Revenue" />
+                                <viz.feeds:FeedItem id="feedCatAxis" uid="categoryAxis" type="Dimension" values="Month" />
+                            </viz:feeds>
+                        </viz:VizFrame>
+                    </VBox>
+
+                    <!-- Pie Chart Container -->
+                    <VBox id="vboxPieChart" class="sapUiSmallMargin">
+                        <viz:VizFrame id="idPieChart" uiConfig="{applicationSet:'fiori'}" height="300px" width="100%" vizType="donut">
+                            <viz:dataset>
+                                <viz.data:FlattenedDataset id="dataPieChart" data="{dashboard>/productDistribution}">
+                                    <viz.data:dimensions>
+                                        <viz.data:DimensionDefinition id="dimCategory" name="Category" value="{dashboard>Category}" />
+                                    </viz.data:dimensions>
+                                    <viz.data:measures>
+                                        <viz.data:MeasureDefinition id="measCount" name="Count" value="{dashboard>Count}" />
+                                    </viz.data:measures>
+                                </viz.data:FlattenedDataset>
+                            </viz:dataset>
+                            <viz:feeds>
+                                <viz.feeds:FeedItem id="feedSize" uid="size" type="Measure" values="Count" />
+                                <viz.feeds:FeedItem id="feedColor" uid="color" type="Dimension" values="Category" />
+                            </viz:feeds>
+                        </viz:VizFrame>
+                    </VBox>
+                </layout:Grid>
+
+                <!-- Customer Reviews -->
+                <Title id="titleReviews" text="Latest Customer Reviews" titleStyle="H3" class="sapUiSmallMarginTop sapUiSmallMarginBottom"/>
+                
+                <List id="listReviews" items="{dashboard>/latestReviews}" growing="true" growingThreshold="5" class="sapUiResponsiveMargin">
+                    <headerToolbar>
+                        <Toolbar id="toolbarReviews">
+                            <Title id="titleToolbarReviews" text="Incoming Feedback ({= ${dashboard>/latestReviews}.length})" level="H4"/>
+                            <ToolbarSpacer id="spacerReviews"/>
+                        </Toolbar>
+                    </headerToolbar>
+                    <FeedListItem
+                        id="feedListReviewItem"
+                        sender="{dashboard>Customer}"
+                        icon="sap-icon://person-placeholder"
+                        info="Sentiment: {dashboard>Sentiment}"
+                        timestamp="{dashboard>Date}"
+                        text="{dashboard>Comment}"
+                        convertLinksToAnchorTags="All"/>
+                </List>
+
+            </VBox>
+        </f:content>
+    </f:DynamicPage>
+
+    <!-- Custom control init in view -->
+ 
+
+</mvc:View>

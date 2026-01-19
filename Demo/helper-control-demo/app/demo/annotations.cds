@@ -1,0 +1,1 @@
+using DashService as service from '../../srv/dash-service';
