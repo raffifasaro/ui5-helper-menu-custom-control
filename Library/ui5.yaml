@@ -1,0 +1,4 @@
+specVersion: "4.0"
+metadata:
+  name: ui5-helper-menu-custom-control
+type: library

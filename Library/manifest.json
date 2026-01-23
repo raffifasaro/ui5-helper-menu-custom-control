@@ -1,0 +1,15 @@
+{
+  "sap.app": {
+    "id": "helper.menu",
+    "type": "library",
+    "applicationVersion": {
+      "version": "0.1.0"
+    },
+    "title": "UI5 Helper Menu Custom Control"
+  },
+  "sap.ui5": {
+    "library": {
+      "name": "helper.menu"
+    }
+  }
+}
