@@ -1,0 +1,31 @@
+{
+  "name": "ui5-helper-menu-custom-control",
+  "version": "0.1.0",
+  "description": "Reusable SAP UI5 helper menu custom control",
+  "license": "Apache-2.0",
+
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raffifasaro/ui5-helper-menu-custom-control"
+  },
+
+  "keywords": [
+    "ui5",
+    "sapui5",
+    "openui5",
+    "custom-control"
+  ],
+
+  "files": [
+    "dist"
+  ],
+
+  "scripts": {
+    "build": "ui5 build",
+    "prepublishOnly": "npm run build"
+  },
+
+  "devDependencies": {
+    "@ui5/cli": "^3.0.0"
+  }
+}
