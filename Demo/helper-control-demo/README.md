@@ -1,23 +1,34 @@
 # Getting Started
 
-Welcome to your new project.
+This is a simple implementation of an example dashboard with the integration of our custom controls.
+It runs on the SAP AI Core and therefore needs to be set up correctly to work.
 
-It contains these folders and files, following our recommended project layout:
+#### Step 1:
+Navigate to `Demo\helper-control-demo`
 
-File or Folder | Purpose
----------|----------
-`app/` | content for UI frontends goes here
-`db/` | your domain models and data go here
-`srv/` | your service models and code go here
-`package.json` | project metadata and configuration
-`readme.md` | this getting started guide
+#### Step 2:
+Install Dependencies
+```bash
+npm install
+```
 
+#### Step 3:
+Log in to your SAP BTP space. Using SSO is recommended for corporate accounts
+```bash
+cf login -a <your-api-endpoint> -sso
+```
 
-## Next Steps
+#### Step 4:
+Bind your local application to the required service instances:
+```bash
+cds bind -2 <service-instance-name>
+```
 
-- Open a new terminal and run `cds watch`
-- (in VS Code simply choose _**Terminal** > Run Task > cds watch_)
-- Start adding content, for example, a [db/schema.cds](db/schema.cds).
+#### Step 5:
+Run the CAP server locally while using the credentials and services from the cloud:
+```bash
+cds watch --profile hybrid
+```
 
 
 ## Learn More
