@@ -7,52 +7,196 @@
     xmlns:viz="sap.viz.ui5.controls"
     xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
     xmlns:viz.data="sap.viz.ui5.data"
-    xmlns:custom="demo.control">
+    xmlns:custom="demo.control"
+    xmlns:core="sap.ui.core">
 
     <f:DynamicPage id="dynamicPage" headerExpanded="true">
         
         <!-- Page Title -->
         <f:title>
-            <f:DynamicPageTitle id="dynamicPageTitle">
+            <f:DynamicPageTitle id="dynamicPageTitle" class="modernPageHeader">
                 <f:heading>
-                    <Title id="pageHeadingTitle" text="Analytics Dashboard"/>
+                    <HBox id="headerTitleRow" alignItems="Center" class="headerTitleRow">
+                        <core:Icon
+                            src="sap-icon://business-objects-experience"
+                            class="headerMainIcon"
+                            id="headerIcon"/>
+
+                        <VBox id="headerTextBox" class="headerTextBox">
+                            <Title
+                                id="pageHeadingTitle"
+                                text="Analytics Dashboard"
+                                level="H1"
+                                class="headerMainTitle"/>
+
+                            <Text
+                                id="pageSubtitle"
+                                text="Customer insights, sentiment and performance metrics"
+                                class="headerSubtitle"/>
+                        </VBox>
+                    </HBox>
                 </f:heading>
-                <f:expandedContent>
-                    <Label id="pageExpandedLabel" text="Real-time customer insights and performance metrics"/>
-                </f:expandedContent>
+
+                <f:actions>
+                    <HBox id="headerActions" alignItems="Center" class="headerActions">
+                        <HBox id="headerStatusPill" class="headerStatusPill" alignItems="Center">
+                            <core:Icon id="statusIcon" src="sap-icon://pulse" class="statusIcon"/>
+                            <Text id="statusText" text="Live Data" class="statusText"/>
+                        </HBox>
+
+                        <Button
+                            id="btnThemeToggle"
+                            icon="sap-icon://light-mode"
+                            tooltip="Toggle Dark/Light Mode"
+                            press=".onToggleTheme"
+                            class="themeToggleBtn"/>
+                    </HBox>
+                </f:actions>
             </f:DynamicPageTitle>
         </f:title>
 
         <f:content>
-            <VBox id="mainContentVBox" class="sapUiSmallMargin">
+            <VBox id="mainContentVBox" class="sapUiSmallMarginBottom sapUiSmallMarginBeginEnd liquidGlassContainer">
 
-                <!-- KPI Tiles -->
-                <layout:HorizontalLayout id="kpiLayout" allowWrapping="true" class="sapUiSmallMarginTop sapUiSmallMarginBottom">
-                    <GenericTile id="tileRevenue" header="Total Revenue" subheader="YTD" class="sapUiTinyMarginBegin sapUiTinyMarginTop">
-                        <TileContent id="tileContRevenue" unit="EUR" footer="Current">
-                            <NumericContent id="numRevenue" value="{dashboard>/kpis/totalRevenue}" icon="sap-icon://money-bills" withMargin="false"/>
+                <!-- KPI Tiles - Single Row -->
+                <FlexBox id="kpiLayout" width="100%" justifyContent="SpaceBetween" wrap="NoWrap" class="sapUiMediumMarginBottom kpiLayout">
+                    <GenericTile id="tileRevenue" header="" subheader="" class="kpiTile">
+                        <layoutData>
+                            <FlexItemData id="flexItemRevenue" growFactor="1" baseSize="0%"/>
+                        </layoutData>
+                        <TileContent id="tileContRevenue" class="kpiTileContent">
+                            <VBox id="revenueTileBody" class="kpiTileBody" fitContainer="true" renderType="Bare">
+                                <HBox id="revenueHeaderRow" justifyContent="SpaceBetween" alignItems="Center" class="kpiHeaderRow">
+                                    <VBox id="revenueTitleBox">
+                                        <Text id="revenueTitle" text="Total Revenue" class="kpiTitle"/>
+                                    </VBox>
+                                    <HBox id="revenueIconBox" class="kpiIconBox" justifyContent="Center" alignItems="Center">
+                                        <core:Icon id="revenueIcon" src="sap-icon://money-bills" class="kpiIcon"/>
+                                    </HBox>
+                                </HBox>
+
+                                <Text id="revenueAmount" text="{dashboard>/kpis/totalRevenue}" class="kpiAmount"/>
+
+                                <HBox id="revenueTrendRow" class="kpiTrendRow positiveTrend" alignItems="Center">
+                                    <core:Icon id="revenueTrendIcon" src="sap-icon://trend-up" class="kpiTrendIcon"/>
+                                    <Text id="revenueTrendText" text="+12% vs last month" class="kpiTrendText"/>
+                                </HBox>
+                            </VBox>
                         </TileContent>
                     </GenericTile>
 
-                    <GenericTile id="tileSentiment" header="Avg Sentiment" subheader="AI Analyzed" class="sapUiTinyMarginBegin sapUiTinyMarginTop">
-                        <TileContent id="tileContSentiment" footer="Last 24h">
-                            <NumericContent id="numSentiment" value="{dashboard>/kpis/avgSentiment}" icon="sap-icon://family-care" valueColor="Good" withMargin="false"/>
+                    <GenericTile id="activeUsers" header="" subheader="" class="kpiTile">
+                        <layoutData>
+                            <FlexItemData id="flexItemUsers" growFactor="1" baseSize="0%"/>
+                        </layoutData>
+                        <TileContent id="tileContUsers" class="kpiTileContent">
+                            <VBox id="usersTileBody" class="kpiTileBody" fitContainer="true" renderType="Bare">
+                                <HBox id="usersHeaderRow" justifyContent="SpaceBetween" alignItems="Center" class="kpiHeaderRow">
+                                    <VBox id="usersTitleBox">
+                                        <Text id="usersTitle" text="Active Users" class="kpiTitle"/>
+                                    </VBox>
+                                    <HBox id="usersIconBox" class="kpiIconBox" justifyContent="Center" alignItems="Center">
+                                        <core:Icon id="usersIcon" src="sap-icon://group" class="kpiIcon"/>
+                                    </HBox>
+                                </HBox>
+
+                                <Text id="usersAmount" text="{dashboard>/kpis/activeUsers}" class="kpiAmount"/>
+
+                                <HBox id="usersTrendRow" class="kpiTrendRow positiveTrend" alignItems="Center">
+                                    <core:Icon id="usersTrendIcon" src="sap-icon://trend-up" class="kpiTrendIcon"/>
+                                    <Text id="usersTrendText" text="+5% vs last month" class="kpiTrendText"/>
+                                </HBox>
+                            </VBox>
                         </TileContent>
                     </GenericTile>
 
-                    <GenericTile id="tileTickets" header="Open Tickets" subheader="Support" press="onPress" class="sapUiTinyMarginBegin sapUiTinyMarginTop">
-                        <TileContent id="tileContTickets" footer="Action Required">
-                            <NumericContent id="numTickets" value="{dashboard>/kpis/openTickets}" icon="sap-icon://alert" valueColor="Critical" withMargin="false"/>
+                    <GenericTile id="tileSentiment" header="" subheader="" class="kpiTile">
+                        <layoutData>
+                            <FlexItemData id="flexItemSentiment" growFactor="1" baseSize="0%"/>
+                        </layoutData>
+                        <TileContent id="tileContSentiment" class="kpiTileContent">
+                            <VBox id="sentimentTileBody" class="kpiTileBody" fitContainer="true" renderType="Bare">
+                                <HBox id="sentimentHeaderRow" justifyContent="SpaceBetween" alignItems="Center" class="kpiHeaderRow">
+                                    <VBox id="sentimentTitleBox">
+                                        <Text id="sentimentTitle" text="Avg Sentiment" class="kpiTitle"/>
+                                    </VBox>
+                                    <HBox id="sentimentIconBox" class="kpiIconBox" justifyContent="Center" alignItems="Center">
+                                        <core:Icon id="sentimentIcon" src="sap-icon://family-care" class="kpiIcon"/>
+                                    </HBox>
+                                </HBox>
+
+                                <HBox id="sentimentGaugeWrapper" class="sentimentGaugeWrapper" alignItems="Center">
+                                    <HBox id="sentimentGauge" class="sentimentGauge">
+                                        <core:HTML id="sentimentGaugeIndicator" content="&lt;div class='sentimentIndicator' id='sentimentIndicatorEl'&gt;&lt;/div&gt;"/>
+                                    </HBox>
+                                </HBox>
+
+                                <HBox id="sentimentTrendRow" class="kpiTrendRow neutralTrend" alignItems="Center">
+                                    <core:Icon id="sentimentTrendIcon" src="sap-icon://arrow-right" class="kpiTrendIcon"/>
+                                    <Text id="sentimentTrendText" text="Stable last 24h" class="kpiTrendText"/>
+                                </HBox>
+                            </VBox>
                         </TileContent>
                     </GenericTile>
-                </layout:HorizontalLayout>
+
+                    <GenericTile id="tileTickets" header="" subheader="" press="onPress" class="kpiTile">
+                        <layoutData>
+                            <FlexItemData id="flexItemTickets" growFactor="1" baseSize="0%"/>
+                        </layoutData>
+                        <TileContent id="tileContTickets" class="kpiTileContent">
+                            <VBox id="ticketsTileBody" class="kpiTileBody" fitContainer="true" renderType="Bare">
+                                <HBox id="ticketsHeaderRow" justifyContent="SpaceBetween" alignItems="Center" class="kpiHeaderRow">
+                                    <VBox id="ticketsTitleBox">
+                                        <Text id="ticketsTitle" text="Open Tickets" class="kpiTitle"/>
+                                    </VBox>
+                                    <HBox id="ticketsIconBox" class="kpiIconBox" justifyContent="Center" alignItems="Center">
+                                        <core:Icon id="ticketsIcon" src="sap-icon://alert" class="kpiIcon"/>
+                                    </HBox>
+                                </HBox>
+
+                                <Text id="ticketsAmount" text="{dashboard>/kpis/openTickets}" class="kpiAmount"/>
+
+                                <HBox id="ticketsTrendRow" class="kpiTrendRow negativeTrend" alignItems="Center">
+                                    <core:Icon id="ticketsTrendIcon" src="sap-icon://trend-up" class="kpiTrendIcon"/>
+                                    <Text id="ticketsTrendText" text="+14% vs last week" class="kpiTrendText"/>
+                                </HBox>
+                            </VBox>
+                        </TileContent>
+                    </GenericTile>
+
+                    <GenericTile id="tileConversionRate" header="" subheader="" class="kpiTile">
+                        <layoutData>
+                            <FlexItemData id="flexItemConversionRate" growFactor="1" baseSize="0%"/>
+                        </layoutData>
+                        <TileContent id="tileContConversion" class="kpiTileContent">
+                            <VBox id="conversionTileBody" class="kpiTileBody" fitContainer="true" renderType="Bare">
+                                <HBox id="conversionHeaderRow" justifyContent="SpaceBetween" alignItems="Center" class="kpiHeaderRow">
+                                    <VBox id="conversionTitleBox">
+                                        <Text id="conversionTitle" text="Conversion Rate" class="kpiTitle"/>
+                                    </VBox>
+                                    <HBox id="conversionIconBox" class="kpiIconBox" justifyContent="Center" alignItems="Center">
+                                        <core:Icon id="conversionIcon" src="sap-icon://split" class="kpiIcon"/>
+                                    </HBox>
+                                </HBox>
+
+                                <Text id="conversionAmount" text="{dashboard>/kpis/conversionRate}%" class="kpiAmount"/>
+
+                                <HBox id="conversionTrendRow" class="kpiTrendRow negativeTrend" alignItems="Center">
+                                    <core:Icon id="conversionTrendIcon" src="sap-icon://trend-down" class="kpiTrendIcon"/>
+                                    <Text id="conversionTrendText" text="-1.2% vs last month" class="kpiTrendText"/>
+                                </HBox>
+                            </VBox>
+                        </TileContent>
+                    </GenericTile>
+                </FlexBox>
+
                 
-                <!-- Charts -->
+                <!-- Charts Section -->
                 <Title id="titleCharts" text="Performance &amp; Distribution" titleStyle="H3" class="sapUiSmallMarginBottom"/>
                 
-                <layout:Grid id="chartsGrid" defaultSpan="L6 M12 S12">
+                <HBox id="chartsGrid" width="100%" justifyContent="SpaceBetween" wrap="Wrap">
                     <!-- Line Chart Container -->
-                    <VBox id="vboxLineChart" class="sapUiSmallMargin">
+                    <VBox id="vboxLineChart" width="49%" class="sapUiSmallMarginBottom chartContainer">
                         <viz:VizFrame id="idLineChart" uiConfig="{applicationSet:'fiori'}" height="300px" width="100%" vizType="line">
                             <viz:dataset>
                                 <viz.data:FlattenedDataset id="dataLineChart" data="{dashboard>/salesTrend}">
@@ -72,7 +216,7 @@
                     </VBox>
 
                     <!-- Pie Chart Container -->
-                    <VBox id="vboxPieChart" class="sapUiSmallMargin">
+                    <VBox id="vboxPieChart" width="49%" class="sapUiSmallMarginBottom chartContainer">
                         <viz:VizFrame id="idPieChart" uiConfig="{applicationSet:'fiori'}" height="300px" width="100%" vizType="donut">
                             <viz:dataset>
                                 <viz.data:FlattenedDataset id="dataPieChart" data="{dashboard>/productDistribution}">
@@ -90,33 +234,37 @@
                             </viz:feeds>
                         </viz:VizFrame>
                     </VBox>
-                </layout:Grid>
-
-                <!-- Customer Reviews -->
-                <Title id="titleReviews" text="Latest Customer Reviews" titleStyle="H3" class="sapUiSmallMarginTop sapUiSmallMarginBottom"/>
+                </HBox>
                 
-                <List id="listReviews" items="{dashboard>/latestReviews}" growing="true" growingThreshold="5" class="sapUiResponsiveMargin">
-                    <headerToolbar>
-                        <Toolbar id="toolbarReviews">
-                            <Title id="titleToolbarReviews" text="Incoming Feedback ({= ${dashboard>/latestReviews}.length})" level="H4"/>
-                            <ToolbarSpacer id="spacerReviews"/>
-                        </Toolbar>
-                    </headerToolbar>
-                    <FeedListItem
-                        id="feedListReviewItem"
-                        sender="{dashboard>Customer}"
-                        icon="sap-icon://person-placeholder"
-                        info="Sentiment: {dashboard>Sentiment}"
-                        timestamp="{dashboard>Date}"
-                        text="{dashboard>Comment}"
-                        convertLinksToAnchorTags="All"/>
-                </List>
+                <!-- Customer Reviews Section -->
+                <Title id="titleReviews" text="Latest Customer Reviews" titleStyle="H3" class="sapUiMediumMarginTop sapUiSmallMarginBottom"/>
+                
+                <VBox id="reviewsContainer" class="chartContainer reviewsContainer">
+                    <List id="listReviews" items="{dashboard>/latestReviews}" growing="true" growingThreshold="5">
+                        <headerToolbar>
+                            <Toolbar id="toolbarReviews">
+                                <core:Icon id="reviewsHeaderIcon" src="sap-icon://comment" class="reviewsHeaderIcon"/>
+                                <Title id="titleToolbarReviews" text="Customer Feedback" level="H4"/>
+                                <ToolbarSpacer id="spacerReviews"/>
+                                <ObjectNumber id="reviewCount" number="{= ${dashboard>/latestReviews}.length}" unit="Total"/>
+                            </Toolbar>
+                        </headerToolbar>
+                        <FeedListItem
+                            id="feedListReviewItem"
+                            sender="{dashboard>Customer}"
+                            icon="sap-icon://person-placeholder"
+                            info="Sentiment: {dashboard>Sentiment}"
+                            timestamp="{dashboard>Date}"
+                            text="{dashboard>Comment}"
+                            convertLinksToAnchorTags="All"/>
+                    </List>
+                </VBox>
 
             </VBox>
         </f:content>
     </f:DynamicPage>
 
     <!-- Custom control init in view -->
+    <custom:AiAssistantCore id="aiAssistantControl"/>
  
-
 </mvc:View>

@@ -1,1 +1,844 @@
-/* Enter your custom styles here */
+:root {
+    --sap-ai-purple: #7928CA;
+    --sap-ai-purple-light: #A855F7;
+    --sap-ai-purple-dark: #5B21B6;
+    --sap-ai-purple-glow: rgba(121, 40, 202, 0.4);
+    --sap-ai-violet: #9945FF;
+    --sap-dark-grey: #1E1E2E;
+    --sap-dark-grey-light: #2D2D3D;
+    --sap-dark-grey-lighter: #3D3D4D;
+}
+
+.sapFDynamicPage,
+.sapFDynamicPageContent {
+    background: var(--sapBackgroundColor) !important;
+    transition: background 0.4s ease;
+}
+
+html[data-sap-ui-theme="sap_horizon"] .sapFDynamicPageContent {
+    background: linear-gradient(135deg, #f8f9fc 0%, #eef1f8 50%, #e8ecf4 100%) !important;
+}
+
+html[data-sap-ui-theme="sap_horizon_dark"] .sapFDynamicPage,
+html[data-sap-ui-theme="sap_horizon_dark"] .sapFDynamicPageContent {
+    background: linear-gradient(145deg, var(--sap-dark-grey) 0%, #171723 50%, #12121C 100%) !important;
+}
+
+html[data-sap-ui-theme="sap_horizon_dark"] .kpiTile.sapMGT,
+html[data-sap-ui-theme="sap_horizon_dark"] .chartContainer {
+    background: linear-gradient(145deg, var(--sap-dark-grey-light) 0%, var(--sap-dark-grey) 100%) !important;
+}
+
+.sapFDynamicPageTitle {
+    background: var(--sapPageHeader_Background, var(--sapShellColor)) !important;
+    transition: background 0.3s ease;
+}
+
+.sapFDynamicPageTitle .sapMTitle {
+    color: var(--sapShell_TextColor) !important;
+}
+
+.sapFDynamicPageTitle .sapMLabel {
+    color: var(--sapShell_TextColor) !important;
+    opacity: 0.75;
+}
+
+.themeToggleBtn {
+    margin-left: 1rem !important;
+}
+
+.themeToggleBtn.sapMBtn .sapMBtnInner {
+    background: var(--sapButton_Background) !important;
+    border: 1px solid var(--sapButton_BorderColor) !important;
+    border-radius: 2rem !important;
+    min-width: 2.5rem;
+}
+
+.themeToggleBtn.sapMBtn:hover .sapMBtnInner {
+    background: var(--sapButton_Hover_Background) !important;
+}
+
+.themeToggleBtn .sapMBtnIcon {
+    color: var(--sapButton_TextColor) !important;
+}
+
+.liquidGlassContainer {
+    padding: 1rem;
+}
+
+.sapFDynamicPageTitle {
+    min-height: auto !important;
+    padding: 0.75rem 2rem !important;
+}
+
+.sapFDynamicPageTitleMain {
+    padding: 0 !important;
+}
+
+.kpiLayout {
+    gap: 1rem;
+    padding: 0.5rem 0;
+}
+
+.kpiLayout .kpiTile {
+    flex: 1 1 0;
+    min-width: 0;
+    width: 100%;
+}
+
+.kpiTile.sapMGT {
+    height: 10rem !important;
+    background: linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(248,249,252,0.95) 100%) !important;
+    border: 1px solid rgba(121, 40, 202, 0.08) !important;
+    border-radius: 1rem !important;
+    box-shadow: 
+        0 4px 6px -1px rgba(121, 40, 202, 0.05),
+        0 10px 20px -2px rgba(0, 0, 0, 0.06),
+        0 0 0 1px rgba(255, 255, 255, 0.5) inset !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    overflow: hidden !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.kpiTile.sapMGT::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--sap-ai-purple), var(--sap-ai-purple-light), var(--sap-ai-violet));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.kpiTile.sapMGT:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+        0 12px 24px -4px rgba(121, 40, 202, 0.15),
+        0 20px 40px -8px rgba(0, 0, 0, 0.12),
+        0 0 0 1px rgba(121, 40, 202, 0.1) inset !important;
+}
+
+.kpiTile.sapMGT:hover::before {
+    opacity: 1;
+}
+
+body.dark-mode .kpiTile.sapMGT,
+html[data-sap-ui-theme="sap_horizon_dark"] .kpiTile.sapMGT {
+    background: linear-gradient(145deg, rgba(45, 45, 61, 0.8) 0%, rgba(30, 30, 46, 0.9) 100%) !important;
+    border: 1px solid rgba(121, 40, 202, 0.2) !important;
+    box-shadow:
+        0 4px 16px rgba(0, 0, 0, 0.3),
+        0 0 30px -5px rgba(121, 40, 202, 0.15),
+        0 0 0 1px rgba(121, 40, 202, 0.1) inset !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+body.dark-mode .kpiTile.sapMGT:hover,
+html[data-sap-ui-theme="sap_horizon_dark"] .kpiTile.sapMGT:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        0 0 40px -5px rgba(121, 40, 202, 0.25),
+        0 0 60px -10px rgba(168, 85, 247, 0.15),
+        0 0 0 1px rgba(121, 40, 202, 0.2) inset !important;
+}
+
+.kpiTile .sapMGTHdrContent {
+    display: none !important;
+}
+
+.kpiTile .sapMGTContent,
+.kpiTile .sapMTileCnt,
+.kpiTile .sapMTileCntContent {
+    height: 100% !important;
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+.kpiTileBody {
+    padding: 1rem 1.25rem !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+}
+
+.kpiHeaderRow {
+    width: 100%;
+}
+
+.kpiTitle {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--sapTitleColor);
+    letter-spacing: 0.01em;
+}
+
+.kpiSubtitle {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--sapSubtitleColor);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-top: 0.15rem;
+}
+
+.kpiIconBox {
+    width: 2.5rem;
+    height: 2.5rem;
+    background: linear-gradient(135deg, rgba(121, 40, 202, 0.08) 0%, rgba(168, 85, 247, 0.12) 100%);
+    border-radius: 0.625rem;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.kpiTile.sapMGT:hover .kpiIconBox {
+    background: linear-gradient(135deg, rgba(121, 40, 202, 0.15) 0%, rgba(168, 85, 247, 0.2) 100%);
+    transform: scale(1.05);
+}
+
+html[data-sap-ui-theme="sap_horizon_dark"] .kpiIconBox {
+    background: linear-gradient(135deg, rgba(121, 40, 202, 0.2) 0%, rgba(168, 85, 247, 0.15) 100%);
+}
+
+html[data-sap-ui-theme="sap_horizon_dark"] .kpiTile.sapMGT:hover .kpiIconBox {
+    background: linear-gradient(135deg, rgba(121, 40, 202, 0.3) 0%, rgba(168, 85, 247, 0.25) 100%);
+}
+
+.kpiIcon {
+    font-size: 1.1rem;
+    color: var(--sap-ai-purple, #7928CA);
+    transition: color 0.3s ease;
+}
+
+html[data-sap-ui-theme="sap_horizon_dark"] .kpiIcon {
+    color: var(--sap-ai-purple-light, #A855F7);
+}
+
+.kpiAmount {
+    font-size: 1.85rem;
+    font-weight: 700;
+    color: var(--sapTitleColor);
+    margin-top: 0.5rem;
+    flex-shrink: 0;
+    letter-spacing: -0.02em;
+}
+
+.sentimentGaugeWrapper {
+    margin: auto 0 !important;
+    width: 100%;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex: 1 !important;
+}
+
+.sentimentGauge {
+    width: 100%;
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 10px;
+    background: linear-gradient(to right, 
+        #bb0000 0%,
+        #e9730c 30%,
+        #107e3e 100%
+    );
+    border-radius: 4px;
+    position: relative !important;
+    overflow: visible !important;
+    min-width: 100px;
+    display: block !important;
+}
+
+body.dark-mode .sentimentGauge {
+    background: linear-gradient(to right, 
+        #fe3232 0%,
+        #ff7a45 30%,
+        #36a41d 100%
+    );
+}
+
+.sentimentIndicator {
+    position: absolute;
+    top: -4px;
+    left: 85%;
+    width: 4px;
+    height: 18px;
+    background: #1d2d3e;
+    border-radius: 2px;
+    transform: translateX(-50%);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    transition: left 0.5s ease;
+}
+
+body.dark-mode .sentimentIndicator {
+    background: #ffffff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.kpiTrendRow {
+    display: flex !important;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: auto !important;
+    flex-shrink: 0;
+    padding: 0.25rem 0.6rem;
+    background: var(--sapBackgroundColor);
+    border-radius: 1rem;
+    width: fit-content;
+    transition: background 0.3s ease;
+}
+
+.kpiTrendIcon {
+    font-size: 0.7rem;
+    color: var(--sapNeutralColor);
+}
+
+.kpiTrendText {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--sapSubtitleColor);
+    letter-spacing: 0.01em;
+}
+
+.kpiTrendRow.positiveTrend {
+    background: var(--sapSuccessBackground) !important;
+}
+
+.kpiTrendRow.positiveTrend .kpiTrendIcon,
+.kpiTrendRow.positiveTrend .kpiTrendText {
+    color: var(--sapPositiveColor);
+}
+
+.kpiTrendRow.neutralTrend {
+    background: var(--sapNeutralBackground) !important;
+}
+
+.kpiTrendRow.neutralTrend .kpiTrendIcon,
+.kpiTrendRow.neutralTrend .kpiTrendText {
+    color: var(--sapNeutralColor);
+}
+
+.kpiTrendRow.negativeTrend {
+    background: var(--sapErrorBackground) !important;
+}
+
+.kpiTrendRow.negativeTrend .kpiTrendIcon,
+.kpiTrendRow.negativeTrend .kpiTrendText {
+    color: var(--sapNegativeColor);
+}
+
+#titleCharts,
+#titleReviews {
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--sapTitleColor) !important;
+    padding: 0.5rem 0;
+    margin-top: 1.5rem !important;
+    margin-bottom: 0.75rem !important;
+}
+
+#chartsGrid {
+    margin-top: 0.5rem;
+}
+
+.chartContainer {
+    background: linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(248,249,252,0.9) 100%) !important;
+    border: 1px solid rgba(121, 40, 202, 0.08) !important;
+    border-radius: 1rem !important;
+    box-shadow: 
+        0 4px 6px -1px rgba(121, 40, 202, 0.05),
+        0 10px 20px -2px rgba(0, 0, 0, 0.06),
+        0 0 0 1px rgba(255, 255, 255, 0.6) inset !important;
+    padding: 1.25rem !important;
+    overflow: hidden !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.chartContainer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--sap-ai-purple, #7928CA) 20%, 
+        var(--sap-ai-purple-light, #A855F7) 50%, 
+        var(--sap-ai-violet, #9945FF) 80%, 
+        transparent 100%);
+    opacity: 0.6;
+}
+
+.chartContainer:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 12px 24px -4px rgba(121, 40, 202, 0.12),
+        0 20px 40px -8px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(121, 40, 202, 0.1) inset !important;
+}
+
+body.dark-mode .chartContainer,
+html[data-sap-ui-theme="sap_horizon_dark"] .chartContainer {
+    background: linear-gradient(145deg, rgba(45, 45, 61, 0.8) 0%, rgba(30, 30, 46, 0.9) 100%) !important;
+    border: 1px solid rgba(121, 40, 202, 0.2) !important;
+    box-shadow:
+        0 4px 16px rgba(0, 0, 0, 0.3),
+        0 0 30px -5px rgba(121, 40, 202, 0.15),
+        0 0 0 1px rgba(121, 40, 202, 0.1) inset !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+body.dark-mode .chartContainer:hover,
+html[data-sap-ui-theme="sap_horizon_dark"] .chartContainer:hover {
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        0 0 40px -5px rgba(121, 40, 202, 0.2),
+        0 0 60px -10px rgba(168, 85, 247, 0.12),
+        0 0 0 1px rgba(121, 40, 202, 0.15) inset !important;
+}
+
+.sapVizFrame {
+    background: transparent !important;
+    border-radius: 0.25rem !important;
+    overflow: hidden !important;
+}
+
+.sapVizFrame svg {
+    background: transparent !important;
+}
+
+.sapVizFrame .v-m-root > rect:first-child,
+.sapVizFrame .v-m-main > rect:first-child,
+.sapVizFrame svg > rect:first-child,
+.sapVizFrame .v-background rect,
+.sapVizFrame rect.v-morphable-background,
+.sapVizFrame rect.v-m-background,
+.sapVizFrame .v-m-legend > rect:first-child,
+.sapVizFrame .v-m-legend rect.v-morphable-background {
+    fill: transparent !important;
+}
+
+.sapVizFrame .v-m-title text,
+.sapVizFrame .v-title text {
+    fill: var(--sapTitleColor) !important;
+}
+
+.sapVizFrame text {
+    fill: var(--sapSubtitleColor) !important;
+}
+
+.sapVizFrame .v-m-legend text {
+    fill: var(--sapTextColor) !important;
+}
+
+.chartContainer.reviewsContainer {
+    padding: 0 !important;
+}
+
+#listReviews {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#listReviews .sapMListTblSubHdr,
+#listReviews .sapMListTblHdr,
+#listReviews .sapMListHdr,
+#listReviews .sapMListUl,
+#listReviews .sapMListTbl,
+#listReviews .sapMLIB,
+#listReviews .sapMFeedListItem,
+#listReviews .sapMFeedListItemFooter,
+#listReviews li,
+#listReviews .sapMLIBContent {
+    background: transparent !important;
+}
+
+#listReviews .sapMLIB {
+    border-bottom: 1px solid var(--sapListBorderColor) !important;
+    background: transparent !important;
+    margin-bottom: 0.5rem !important;
+    border-radius: 0.5rem !important;
+    box-shadow: none !important;
+}
+
+body.dark-mode #listReviews .sapMLIB {
+    box-shadow: none !important;
+}
+
+#listReviews .sapMLIB:last-child {
+    border-bottom: none !important;
+    margin-bottom: 0 !important;
+}
+
+#listReviews .sapMLIBContent,
+#listReviews .sapMFeedListItem {
+    padding: 1rem !important;
+}
+
+#listReviews .sapMTB {
+    background: transparent !important;
+    border-bottom: 1px solid var(--sapListBorderColor) !important;
+    padding: 0.75rem 1rem !important;
+    min-height: auto !important;
+}
+
+.reviewsHeaderIcon {
+    color: var(--sap-ai-purple, #7928CA) !important;
+    font-size: 1rem;
+    margin-right: 0.5rem;
+}
+
+html[data-sap-ui-theme="sap_horizon_dark"] .reviewsHeaderIcon {
+    color: var(--sap-ai-purple-light, #A855F7) !important;
+}
+
+#listReviews .sapMTBShrinkItem .sapMTitle {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--sapTitleColor) !important;
+}
+
+.sapMFeedListItemText, 
+.sapMFeedListItemText a {
+    color: var(--sapTextColor) !important;
+}
+
+.sapMFeedListItemInfo {
+    color: var(--sap-ai-purple, #7928CA) !important;
+    font-weight: 500;
+}
+
+html[data-sap-ui-theme="sap_horizon_dark"] .sapMFeedListItemInfo {
+    color: var(--sap-ai-purple-light, #A855F7) !important;
+}
+
+.sapMFeedListItemTimestamp {
+    color: var(--sapSubtitleColor) !important;
+}
+
+#listReviews .sapMFeedListItem:hover {
+    background: var(--sapList_Hover_Background) !important;
+}
+
+#listReviews .sapMFeedListItemSender {
+    font-weight: 600;
+    color: var(--sapTitleColor) !important;
+}
+
+#listReviews .sapMFeedListItemText,
+#listReviews .sapMText {
+    color: var(--sapTextColor) !important;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+#listReviews .sapMFeedListItemImage,
+#listReviews .sapUiIcon.sapMFeedListItemImage {
+    background: linear-gradient(135deg, rgba(121, 40, 202, 0.1) 0%, rgba(168, 85, 247, 0.15) 100%) !important;
+    border-radius: 50%;
+    color: var(--sap-ai-purple, #7928CA) !important;
+}
+
+html[data-sap-ui-theme="sap_horizon_dark"] #listReviews .sapMFeedListItemImage,
+html[data-sap-ui-theme="sap_horizon_dark"] #listReviews .sapUiIcon.sapMFeedListItemImage {
+    background: linear-gradient(135deg, rgba(121, 40, 202, 0.2) 0%, rgba(168, 85, 247, 0.15) 100%) !important;
+    color: var(--sap-ai-purple-light, #A855F7) !important;
+}
+
+#listReviews .sapMObjectNumber {
+    background: var(--sapBackgroundColor);
+    padding: 0.2rem 0.6rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+}
+
+#listReviews .sapMObjectNumber .sapMObjectNumberText {
+    color: var(--sapTextColor) !important;
+}
+
+@media (max-width: 1400px) {
+    .kpiLayout {
+        flex-wrap: wrap !important;
+    }
+    
+    .kpiTile.sapMGT {
+        min-width: calc(33.333% - 0.75rem) !important;
+        flex: 1 1 calc(33.333% - 0.75rem) !important;
+    }
+}
+
+@media (max-width: 900px) {
+    .kpiTile.sapMGT {
+        min-width: calc(50% - 0.5rem) !important;
+        flex: 1 1 calc(50% - 0.5rem) !important;
+    }
+    
+    .kpiAmount {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .kpiTile.sapMGT {
+        min-width: 100% !important;
+        flex: 1 1 100% !important;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--sapScrollBar_TrackColor, var(--sapBackgroundColor));
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--sapScrollBar_FaceColor, var(--sapContent_ForegroundBorderColor));
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--sapScrollBar_Hover_FaceColor, var(--sapContent_ForegroundColor));
+}
+
+html, body {
+    background: var(--sapBackgroundColor) !important;
+    scrollbar-color: var(--sapScrollBar_FaceColor) var(--sapScrollBar_TrackColor);
+}
+
+.modernPageHeader {
+    position: relative;
+    background: linear-gradient(145deg, 
+        var(--sapShellColor) 0%, 
+        color-mix(in srgb, var(--sapShellColor) 95%, var(--sap-ai-purple, #7928CA)) 100%) !important;
+}
+
+.modernPageHeader::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 2rem;
+    right: 2rem;
+    height: 3px;
+    border-radius: 2px;
+    background: linear-gradient(
+        90deg,
+        var(--sap-ai-purple, #7928CA),
+        var(--sap-ai-purple-light, #A855F7),
+        rgba(168, 85, 247, 0.3),
+        transparent
+    );
+}
+
+.headerTitleRow {
+    gap: 1rem;
+}
+
+.headerMainIcon {
+    font-size: 2.2rem;
+    color: var(--sap-ai-purple, #7928CA);
+    background: linear-gradient(135deg, rgba(121, 40, 202, 0.1) 0%, rgba(168, 85, 247, 0.15) 100%);
+    border-radius: 0.75rem;
+    padding: 0.6rem;
+    transition: all 0.3s ease;
+}
+
+
+html[data-sap-ui-theme="sap_horizon_dark"] .headerMainIcon {
+    color: var(--sap-ai-purple-light, #A855F7);
+    background: linear-gradient(135deg, rgba(121, 40, 202, 0.2) 0%, rgba(168, 85, 247, 0.15) 100%);
+}
+
+.headerMainTitle {
+    font-size: 1.6rem !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em;
+    color: var(--sapTitleColor) !important;
+}
+
+.headerSubtitle {
+    font-size: 0.85rem;
+    color: var(--sapSubtitleColor);
+    margin-top: 0.15rem;
+}
+
+.headerActions {
+    gap: 0.75rem;
+}
+
+.headerStatusPill {
+    padding: 0.35rem 0.7rem;
+    border-radius: 1rem;
+    background: var(--sapSuccessBackground);
+    gap: 0.35rem;
+}
+
+.statusIcon {
+    font-size: 0.75rem;
+    color: var(--sapPositiveColor);
+}
+
+.statusText {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--sapPositiveColor);
+    letter-spacing: 0.02em;
+}
+
+body.dark-mode .headerStatusPill {
+    background: rgba(54, 164, 29, 0.15);
+}
+
+html[data-sap-ui-theme="sap_horizon_dark"] .sapFDynamicPageContent::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        ellipse at 30% 20%,
+        rgba(121, 40, 202, 0.08) 0%,
+        transparent 50%
+    ),
+    radial-gradient(
+        ellipse at 70% 80%,
+        rgba(168, 85, 247, 0.06) 0%,
+        transparent 50%
+    );
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+html[data-sap-ui-theme="sap_horizon_dark"] .liquidGlassContainer::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(121, 40, 202, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(60px);
+    animation: float 15s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+html[data-sap-ui-theme="sap_horizon_dark"] .liquidGlassContainer::after {
+    content: '';
+    position: absolute;
+    bottom: 20%;
+    left: 5%;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(50px);
+    animation: float 20s ease-in-out infinite reverse;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.kpiTile.sapMGT .kpiTileBody::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(121, 40, 202, 0.02) 0%,
+        transparent 30%,
+        transparent 100%
+    );
+    pointer-events: none;
+    border-radius: 1rem;
+}
+
+html[data-sap-ui-theme="sap_horizon_dark"] .kpiTile.sapMGT .kpiTileBody::before {
+    background: linear-gradient(
+        180deg,
+        rgba(121, 40, 202, 0.08) 0%,
+        transparent 40%,
+        transparent 100%
+    );
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.kpiTile.sapMGT,
+.chartContainer {
+    animation: slideUp 0.6s ease-out forwards;
+}
+
+.kpiLayout .kpiTile:nth-child(1) { animation-delay: 0.1s; }
+.kpiLayout .kpiTile:nth-child(2) { animation-delay: 0.15s; }
+.kpiLayout .kpiTile:nth-child(3) { animation-delay: 0.2s; }
+.kpiLayout .kpiTile:nth-child(4) { animation-delay: 0.25s; }
+.kpiLayout .kpiTile:nth-child(5) { animation-delay: 0.3s; }
+
+html[data-sap-ui-theme="sap_horizon_dark"] ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--sap-dark-grey-lighter) 0%, var(--sap-dark-grey-light) 100%);
+    border: 2px solid var(--sap-dark-grey);
+}
+
+html[data-sap-ui-theme="sap_horizon_dark"] ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, rgba(121, 40, 202, 0.5) 0%, rgba(168, 85, 247, 0.4) 100%);
+}
+
+#titleCharts::before,
+#titleReviews::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 1.2em;
+    background: linear-gradient(180deg, var(--sap-ai-purple, #7928CA) 0%, var(--sap-ai-purple-light, #A855F7) 100%);
+    border-radius: 2px;
+    margin-right: 0.75rem;
+    vertical-align: middle;
+}
+
+#listReviews .sapMFeedListItem:hover {
+    background: linear-gradient(90deg, 
+        rgba(121, 40, 202, 0.03) 0%, 
+        transparent 100%) !important;
+}
+
+html[data-sap-ui-theme="sap_horizon_dark"] #listReviews .sapMFeedListItem:hover {
+    background: linear-gradient(90deg, 
+        rgba(121, 40, 202, 0.1) 0%, 
+        transparent 100%) !important;
+}
+
