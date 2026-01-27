@@ -81,23 +81,38 @@ The framework includes three production-ready AI buttons (available separately o
 
 ### Screenshots
 
+
 #### Core Framework
-![Floating Menu]()
+![Floating Menu](https://github.com/user-attachments/assets/bbd2f884-0d1f-4541-967e-c53ff2f4a2a4)
+
 *Floating AI Assistant Menu - Radial button layout*
 
-![Drag and Drop]()
-*Drag and drop interaction with visual highlighting*
+
+![Drag and Drop](https://github.com/user-attachments/assets/c1314790-1440-4371-bdac-2f737703cbff)
+
+*Drag and drop interaction with visual highlighting on example of insight button*
+
 
 #### Custom Buttons
 
-![Chat Interface]()
+##### Chat Button
+
+![Chat Interface](https://github.com/user-attachments/assets/4c054df4-ca7b-43d6-93a4-04cbce6391e9)
+
 *Interactive chat dialog*
 
-![Translation]()
+##### Translate Button
+
+![Translation](https://github.com/user-attachments/assets/88fa7e0d-51cc-45a3-87ee-bf24e3ea4181)
+
 *Drag and drop to translate*
 
-![Chart Insights]()
+##### Insight Button
+
+![Chart Insights](https://github.com/user-attachments/assets/2a343ff9-fba9-4644-a05c-281446a7c8bc)
+
 *AI-powered chart analysis with insights popover*
+
 
 ---
 
