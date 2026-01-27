@@ -1,9 +1,10 @@
 {
     "kpis": {
-        "totalRevenue": "4.2M",
+        "totalRevenue": "€ 4.2M",
         "activeUsers": "1,240",
-        "avgSentiment": "Positive",
-        "openTickets": 12
+        "sentimentPercent": 85,
+        "openTickets": 12,
+        "conversionRate": 23.8  
     },
     "salesTrend": [
         { "Month": "Jan", "Revenue": 30000 },
